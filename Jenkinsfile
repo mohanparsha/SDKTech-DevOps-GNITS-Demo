@@ -51,7 +51,7 @@ pipeline {
 	
         stage('QA Release'){
             steps{
-                sh 'sudo docker run --name SDKTech-DevOps-Demo-$BUILD_NUMBER -p 9090:9090 --cpus="0.50" --memory="256m" -e PORT=9090 -d sdktech-devops-demo:$BUILD_NUMBER'
+                sh 'sudo docker run --name SDKTech-DevOps-Demo-$BUILD_NUMBER -p 8090:8090 --cpus="0.50" --memory="256m" -e PORT=8090 -d sdktech-devops-demo:$BUILD_NUMBER'
             }
         }
 	
