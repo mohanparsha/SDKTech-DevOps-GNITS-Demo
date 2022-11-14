@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('Code Checkout') {
             steps {
-               git branch: 'devops-demo', url: 'https://github.com/mohanparsha/SDKTech-DevOps-Demo.git'
+               git url: 'https://github.com/mohanparsha/SDKTech-DevOps-GNITS-Demo.git'
             }
         }
    	    
@@ -27,7 +27,7 @@ pipeline {
 			rtMaven.tool = 'M3'
 			rtMaven.deployer snapshotRepo: ARTIFACTORY_LOCAL_SNAPSHOT_REPO, server: server
         		buildInfo = Artifactory.newBuildInfo()
-			rtMaven.run pom: '/var/lib/jenkins/workspace/SDKTech-DevSecOps-Demo/pom.xml', goals: 'clean install', buildInfo: buildInfo
+			rtMaven.run pom: '/var/lib/jenkins/workspace/SDKTech-DevOps-GNITS-Demo/pom.xml', goals: 'clean install', buildInfo: buildInfo
         	}		
             }
         }
@@ -43,7 +43,7 @@ pipeline {
            
         stage('Building Docker Image'){
             steps{
-		sh 'sudo chmod +x /var/lib/jenkins/workspace/SDKTech-DevOps-Demo/mvnw'
+		sh 'sudo chmod +x /var/lib/jenkins/workspace/SDKTech-DevOps-GNITS-Demo/mvnw'
                 sh 'sudo docker build -t sdktech-devops-demo:$BUILD_NUMBER .'
                 sh 'sudo docker images'
             }
